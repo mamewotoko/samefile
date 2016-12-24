@@ -20,5 +20,5 @@ Reference
 * [ocaml/ocaml-ci-scripts](https://github.com/ocaml/ocaml-ci-scripts)
 
 ----
-Takashi Masuyama < mamewotoko@gmail.com >
+Takashi Masuyama < mamewotoko@gmail.com >  
 http://mamewo.ddo.jp/
