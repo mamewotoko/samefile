@@ -16,6 +16,8 @@ Run
 
 TODO
 ----
+* summarize directory which contains same files
+  * e.g. directory A may be copy of B because A and B has many same files
 * map reduce?
   * group files by size and compare files whose size are same
   * distributed computing
