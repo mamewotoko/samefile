@@ -1,0 +1,11 @@
+A -> B
+e.g.
+  "x and y are same file" -> "file size of x and y are same"
+
+  contraposition
+  "file size of x and y are not same" -> "x and y are not same file"
+  not B -> not A
+
+  using contraposition, it is used to skip file comparison
+  B (here, checking file size) should be light enough than comparing file content
+ 
