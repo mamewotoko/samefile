@@ -14,6 +14,25 @@ Run
 ./samefile [PATH...]
 ```
 
+Build with Docker
+------------------
+1. pull ocaml docker image 
+
+    ```
+    docker pull ocaml/opam
+    ```
+2.　run docker container
+
+    ```
+    docker run -v `pwd`:/home/opam/work -it ocaml/opam bash
+    ```
+3. inside container run make
+
+    ```
+    cd work
+    make
+    ```
+
 TODO
 ----
 * summarize directory which contains same files
