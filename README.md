@@ -1,4 +1,4 @@
-samefile
+samefile [![Build Status](https://travis-ci.org/mamewotoko/samefile.svg?branch=master)](https://travis-ci.org/mamewotoko/samefile)
 ========
 collect same file and output them in one line separated by tab
 
