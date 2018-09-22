@@ -1,6 +1,6 @@
 (************************************************************
    samefile.ml		Created      : Sat Nov  8 01:53:17 2003
-  			Last modified: Sun Dec 25 06:02:24 2016
+  			Last modified: Sat Sep 22 09:19:16 2018
   Compile: ocamlc -dtypes str.cma unix.cma samefile.ml -o samefile #
   FTP Directory: sources/ocaml #
 ************************************************************)
@@ -52,8 +52,19 @@ let is_equal_file path1 path2 =
 
 let samefile path =
   let path_string = List.fold_left (fun s p -> p^" "^s) "" path in
-  (* let command_string = Printf.sprintf "find %s -type f -printf \"%%p\t%%s\\n\"" path_string in *)
-  let command_string = Printf.sprintf "find %s -type f -exec stat -f \"%%N\t%%z\" {} \\;" path_string in
+  let uname =
+    let ic = Unix.open_process_in "uname" in
+    let uname = input_line ic in
+    begin
+      close_in ic;
+      uname
+    end in
+  let stat_executable =
+    if uname = "Darwin" then
+      "gstat"
+    else
+      "stat" in
+  let command_string = Printf.sprintf "find %s -type f -exec %s --printf=\"%%n\t%%s\\n\" {} \\;" path_string stat_executable in
   let input = Unix.open_process_in command_string in
   let rec collect_files_iter result =
     try
