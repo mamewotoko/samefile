@@ -1,6 +1,6 @@
 (************************************************************
    samefile.ml		Created      : Sat Nov  8 01:53:17 2003
-  			Last modified: Sat Sep 22 09:19:16 2018
+  			Last modified: Sat Sep 22 10:18:13 2018
   Compile: ocamlc -dtypes str.cma unix.cma samefile.ml -o samefile #
   FTP Directory: sources/ocaml #
 ************************************************************)
@@ -39,16 +39,22 @@ let compare_stream in1 in2 =
   iter 1 1
 
 let is_equal_file path1 path2 =
-  let in_channel1 = open_in path1 in
-  let in_channel2 = open_in path2 in
-  let in_stream1 = Stream.of_channel in_channel1 in
-  let in_stream2 = Stream.of_channel in_channel2 in
-  let result = compare_stream in_stream1 in_stream2 in
-  close_in in_channel1;
-  close_in in_channel2;
-  match result with
-    Same -> true
-  | Differ _ -> false
+  try
+    let in_channel1 = open_in path1 in
+    let in_channel2 = open_in path2 in
+    let in_stream1 = Stream.of_channel in_channel1 in
+    let in_stream2 = Stream.of_channel in_channel2 in
+    let result = compare_stream in_stream1 in_stream2 in
+    close_in in_channel1;
+    close_in in_channel2;
+    match result with
+      Same -> true
+    | Differ _ -> false
+  with e ->
+    begin
+      Printf.eprintf "%s\n" (Printexc.to_string e);
+      false
+    end
 
 let samefile path =
   let path_string = List.fold_left (fun s p -> p^" "^s) "" path in
