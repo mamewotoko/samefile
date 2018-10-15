@@ -1,6 +1,6 @@
 (************************************************************
    samefile.ml		Created      : Sat Nov  8 01:53:17 2003
-  			Last modified: Sat Sep 22 10:18:13 2018
+  			Last modified: Sat Sep 22 14:25:35 2018
   Compile: ocamlc -dtypes str.cma unix.cma samefile.ml -o samefile #
   FTP Directory: sources/ocaml #
 ************************************************************)
@@ -128,16 +128,19 @@ let _ =
     match !pathlist with 
       [] -> [ "." ]
     | _ -> !pathlist in
-  let result = samefile path in
-  let dupsize = List.fold_left (fun n (size, lst) ->
-    let len = List.length lst in
-    if len > 1 then
-      begin
-	if !is_print_size_mode then
-	  Printf.printf "%d\t" size;
-	List.iter (fun x -> Printf.printf "%s\t" x) lst;
-	Printf.printf "\n"
-      end;
-    n + (size*(len-1)))
-      0 result in
-  Printf.printf "dupsize: %d\n" dupsize
+  try
+    let result = samefile path in
+    let dupsize = List.fold_left (fun n (size, lst) ->
+                      let len = List.length lst in
+                      if len > 1 then
+                        begin
+	                      if !is_print_size_mode then
+	                        Printf.printf "%d\t" size;
+	                      List.iter (fun x -> Printf.printf "%s\t" x) lst;
+	                      Printf.printf "\n"
+                        end;
+                      n + (size*(len-1)))
+                    0 result in
+    Printf.printf "dupsize: %d\n" dupsize
+  with e ->
+    Printexc.get_callstack 5 |> Printexc.raw_backtrace_to_string |> print_endline
