@@ -4,12 +4,14 @@ collect same file and output them in one line separated by tab
 
 Build
 -----
+
 ```
 make
 ```
 
 Run
 ---
+
 ```
 ./samefile [PATH...]
 ```
