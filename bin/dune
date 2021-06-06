@@ -1,0 +1,3 @@
+(executable
+  (name samefile)
+  (libraries str unix))

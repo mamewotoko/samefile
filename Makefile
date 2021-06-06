@@ -1,6 +1,6 @@
 OCAMLMAKEFILE=./OCamlMakefile
-SOURCES=samefile.ml
-RESULT=samefile
+SOURCES=bin/samefile.ml
+RESULT=bin/samefile
 LIBS=str unix
 
 include $(OCAMLMAKEFILE)

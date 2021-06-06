@@ -2,23 +2,39 @@ samefile [![Build Status](https://travis-ci.org/mamewotoko/samefile.svg?branch=m
 ========
 collect same file and output them in one line separated by tab
 
-Build
------
+Build with make
+-------------------
+
+### Build
 
 ```
 make
 ```
 
-Run
----
+### Run
 
 ```
-./samefile [PATH...]
+./bin/samefile [PATH...]
+```
+
+Build with dune
+------------------
+
+### Build
+
+```
+dune build
+```
+
+### Run 
+
+```
+dune exec ./bin/samefile
 ```
 
 Build with Docker
 ------------------
-1. pull ocaml docker image 
+1. pull ocaml docker container image 
 
     ```
     docker pull ocaml/opam
