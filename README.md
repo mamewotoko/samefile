@@ -39,7 +39,7 @@ Build with Docker
     ```bash
     docker pull ocaml/opam
     ```
-2.　run docker container
+2. run docker container
 
     ```bash
     docker run -v `pwd`:/home/opam/work -it ocaml/opam bash
