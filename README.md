@@ -1,6 +1,6 @@
 samefile [![Build Status](https://travis-ci.org/mamewotoko/samefile.svg?branch=master)](https://travis-ci.org/mamewotoko/samefile)
 ========
-collect same file and output them in one line separated by tab
+collect files that have same content and output file paths in one line separated by tab
 
 Build with make
 -------------------
