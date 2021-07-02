@@ -1,13 +1,13 @@
-name: CI on Linux
+name: CI
 
 on: [push]
 
 jobs:
-  build:
+  build_on_linux:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: build
+    - name: build on linux
       run: |
         sudo apt-get update
         sudo apt-get install -y make
@@ -17,6 +17,28 @@ jobs:
         make
 
       env:
+        OPAM_VERSION: 2
         OCAML_VERSION: 4.11
         TRAVIS_OS_NAME: linux
         TRAVIS_DIST: focal
+
+  build_on_mac:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: build on mac
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y make
+        
+        bash -ex .travis-ocaml.sh
+        eval $(opam env)
+        make
+
+      env:
+        OPAM_VERSION: 2
+        OCAML_VERSION: 4.11
+        TRAVIS_OS_NAME: osx
+
+
+        
