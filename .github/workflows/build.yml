@@ -23,7 +23,7 @@ jobs:
         TRAVIS_DIST: focal
 
   build_on_mac:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
     - uses: actions/checkout@v2
     - name: build on mac
@@ -39,6 +39,3 @@ jobs:
         OPAM_VERSION: 2
         OCAML_VERSION: 4.11
         TRAVIS_OS_NAME: osx
-
-
-        
