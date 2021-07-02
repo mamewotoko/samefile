@@ -1,0 +1,18 @@
+name: CI on Linux
+
+on: [push]
+
+jobs:
+  build_bucklescript:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: build bucklescript
+      run: |
+        # sudo apt-get update
+        # sudo apt-get install -y make
+        
+        bash -ex .travis-ocaml.sh
+        eval $(opam env)
+        make
+
