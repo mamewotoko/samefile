@@ -1,4 +1,4 @@
-samefile [![Build Status](https://travis-ci.org/mamewotoko/samefile.svg?branch=master)](https://travis-ci.org/mamewotoko/samefile)
+samefile [![CI on Linux](https://github.com/mamewotoko/samefile/actions/workflows/build.yml/badge.svg)](https://github.com/mamewotoko/samefile/actions/workflows/build.yml)
 ========
 collect files that have same content and output file paths in one line separated by tab
 
