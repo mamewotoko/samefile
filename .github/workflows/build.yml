@@ -28,13 +28,13 @@ jobs:
     - uses: actions/checkout@v2
     - name: build on mac
       run: |
-        brew install make
-        
-        bash -ex .travis-ocaml.sh
-        eval $(opam env)
+        brew install make ocaml
+       
+        # bash -ex .travis-ocaml.sh
+        # eval $(opam env)
         make
 
-      env:
-        OPAM_VERSION: 2
-        OCAML_VERSION: 4.11
-        TRAVIS_OS_NAME: osx
+      # env:
+      #   OPAM_VERSION: 2
+      #   OCAML_VERSION: 4.11
+      #   TRAVIS_OS_NAME: osx
